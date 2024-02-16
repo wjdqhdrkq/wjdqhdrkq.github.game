@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>숫자 맞추기 게임</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1>숫자 맞추기 게임</h1>
+  <p>1에서 100 사이의 숫자를 맞춰보세요.</p>
+  <input type="text" id="guessField">
+  <button onclick="checkGuess()">제출</button>
+  <p id="message"></p>
+
+  <script>
+    // 컴퓨터가 선택한 랜덤 숫자 생성
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    let guessCount = 0;
+
+    function checkGuess() {
+      const userGuess = parseInt(document.getElementById('guessField').value);
+      guessCount++;
+      
+      if (userGuess === randomNumber) {
+        document.getElementById('message').innerHTML = `축하합니다! ${guessCount}번 만에 숫자를 맞추셨습니다!`;
+      } else if (userGuess < randomNumber) {
+        document.getElementById('message').innerHTML = '더 큰 숫자를 선택하세요.';
+      } else {
+        document.getElementById('message').innerHTML = '더 작은 숫자를 선택하세요.';
+      }
+    }
+  </script>
+</body>
+</html>
